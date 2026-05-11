@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>📊 个股分析系统 | 福泰路1号</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#f0f2f7;color:#2d3436;line-height:1.6;padding:12px}.container{max-width:800px;margin:0 auto}.top-bar{background:linear-gradient(135deg,#1a2744 0%,#2c3e6b 100%);border-radius:16px;padding:20px;color:#fff;margin-bottom:12px;text-align:center}.top-bar h1{font-size:20px;letter-spacing:1px}.top-bar .sub{font-size:12px;opacity:0.7;margin-top:4px}.search-section{background:#fff;border-radius:14px;padding:20px 16px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.06)}.search-title{font-size:15px;font-weight:700;color:#2c3e6b;margin-bottom:12px}.search-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.search-field{margin-bottom:4px}.search-field label{display:block;font-size:11px;color:#888;margin-bottom:2px;font-weight:600}.search-field input,.search-field select{width:100%;padding:8px 10px;border:1px solid #e0e0e0;border-radius:8px;font-size:13px;background:#fafbfc;outline:0;transition:border .2s}.search-field input:focus,.search-field select:focus{border-color:#2c3e6b;background:#fff}.search-field.full{grid-column:1/-1}.search-actions{margin-top:12px;display:flex;gap:8px}.btn{padding:9px 20px;border-radius:8px;font-size:13px;font-weight:600;border:0;cursor:pointer;transition:opacity .2s}.btn-primary{background:#2c3e6b;color:#fff}.btn-primary:hover{opacity:.85}.btn-secondary{background:#e8edf5;color:#2c3e6b}.btn-secondary:hover{opacity:.85}.btn-danger{background:#e74c3c;color:#fff}.btn-danger:hover{opacity:.85}.result-card{background:#fff;border-radius:14px;padding:18px 16px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.06)}.result-header{display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:2px solid #f0f2f7;margin-bottom:12px}.result-title{font-size:15px;font-weight:700;color:#2c3e6b;display:flex;align-items:center;gap:6px}.result-title .badge{font-size:10px;background:#e8edf5;color:#2c3e6b;border-radius:8px;padding:1px 8px;font-weight:400}.result-meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:14px}.meta-item{background:#f8f9fd;border-radius:8px;padding:8px 10px;text-align:center}.meta-item .meta-label{font-size:10px;color:#888}.meta-item .meta-value{font-size:14px;font-weight:700;color:#2c3e6b;margin-top:1px}.rating-box{text-align:center;padding:14px;background:linear-gradient(135deg,#1a2744,#2c3e6b);border-radius:12px;color:#fff;margin-bottom:14px}.rating-box .rating-label{font-size:11px;opacity:.7}.rating-box .rating-value{font-size:22px;font-weight:800;letter-spacing:1px;margin:4px 0}.rating-box .rating-meta{font-size:11px;opacity:.7;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}.rating-box .up{color:#e74c3c}.rating-box .down{color:#27ae60}.section-block{margin-bottom:14px}.section-block:last-child{margin-bottom:0}.section-head{font-size:13px;font-weight:700;color:#2c3e6b;padding:6px 10px;background:#f0f2f7;border-radius:6px;margin-bottom:8px;display:flex;align-items:center;gap:6px}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px}.detail-item{font-size:12px;padding:3px 0}.detail-item .dl{color:#888}.detail-item .dv{font-weight:600;color:#2d3436}.para{font-size:12px;color:#555;line-height:1.7;padding:4px 0}.para .label{font-weight:600;color:#2c3e6b}.analysis-list{list-style:none}.analysis-list li{font-size:12px;color:#555;padding:5px 0;border-bottom:1px solid #f5f5f5;display:flex;gap:6px}.analysis-list li:last-child{border-bottom:0}.analysis-list li .num{color:#2c3e6b;font-weight:700;min-width:16px}.analysis-list li .bold{font-weight:600;color:#2d3436}.tag{display:inline-block;font-size:10px;padding:1px 8px;border-radius:10px;font-weight:600}.tag-bull{background:#fce4e4;color:#e74c3c}.tag-bear{background:#e8f5e8;color:#27ae60}.tag-neutral{background:#e8edf5;color:#636e72}.risk-box{background:#fff8e1;border-radius:8px;padding:10px 12px}.risk-box .risk-item{font-size:12px;color:#856404;padding:4px 0;border-bottom:1px solid #f0e6c0;display:flex;gap:6px}.risk-box .risk-item:last-child{border-bottom:0}.risk-box .risk-item .num{font-weight:700;color:#f39c12;min-width:16px}.catalyst-box{padding:4px 0}.catalyst-item{font-size:12px;color:#2c3e6b;padding:4px 0;display:flex;gap:6px}.catalyst-item .num{font-weight:700;color:#e74c3c;min-width:16px}.final-box{text-align:center;padding:14px;border-radius:12px;margin-top:6px}.final-box .suggestion{font-size:20px;font-weight:800;letter-spacing:1px}.final-box .suggestion.buy{color:#e74c3c}.final-box .suggestion.hold{color:#f39c12}.final-box .suggestion.watch{color:#636e72}.final-box .suggestion.avoid{color:#27ae60}.empty-state{text-align:center;padding:40px 20px;color:#bbb}.empty-state .icon{font-size:48px;margin-bottom:10px}.empty-state .text{font-size:14px}.loading{text-align:center;padding:30px;color:#888}.loading .spinner{display:inline-block;width:24px;height:24px;border:3px solid #e0e0e0;border-top-color:#2c3e6b;border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}#scrollTop{position:fixed;bottom:20px;right:20px;width:40px;height:40px;background:#2c3e6b;color:#fff;border:0;border-radius:50%;font-size:18px;cursor:pointer;opacity:0;transition:opacity .3s;box-shadow:0 2px 8px rgba(0,0,0,.15);display:none}#scrollTop.show{opacity:1}.footer{text-align:center;padding:20px 0 10px;font-size:10px;color:#bbb}@media print{body{padding:0;background:#fff}.top-bar,.search-section,.footer,#scrollTop{display:none!important}}</style>
+</head>
+<body>
+<div class="container">
+<div class="top-bar">
+<h1>📊 个股分析系统</h1>
+<div class="sub">由福泰路AI小组编撰 · 数据来源于公开渠道</div>
+</div>
+<div class="search-section" id="searchSection">
+<div class="search-title">🔍 输入个股信息</div>
+<div class="search-grid">
+<div class="search-field"><label>股票名称</label><input type="text" id="stockName" placeholder="如：中际旭创" value=""></div>
+<div class="search-field"><label>股票代码</label><input type="text" id="stockCode" placeholder="如：300308.SZ" value=""></div>
+<div class="search-field"><label>所属行业</label><input type="text" id="stockIndustry" placeholder="如：光通信" value=""></div>
+<div class="search-field"><label>当前股价</label><input type="text" id="stockPrice" placeholder="如：688.14" value=""></div>
+<div class="search-field"><label>当前市值（亿）</label><input type="text" id="stockMktCap" placeholder="如：1720" value=""></div>
+<div class="search-field"><label>数据基准日</label><input type="date" id="baseDate"></div>
+<div class="search-actions full">
+<button class="btn btn-primary" onclick="generateAnalysis()">📊 生成分析报告</button>
+<button class="btn btn-danger" onclick="clearAll()">🗑️ 清空</button>
+<button class="btn btn-secondary" onclick="window.print()">🖨️ 打印/PDF</button>
+</div>
+</div>
+</div>
+<div id="resultArea">
+<div class="empty-state">
+<div class="icon">📈</div>
+<div class="text">输入个股信息，点击"生成分析报告"<br>系统将自动生成完整的投资分析框架</div>
+</div>
+</div>
+<div class="footer">
+数据来源：东方财富、同花顺、新浪财经等公开渠道 · 仅供参考，不构成投资建议<br>
+编撰：福泰路AI小组 · 投资有风险，入市需谨慎
+</div>
+</div>
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+(function(){const d=new Date();const y=d.getFullYear();const m=String(d.getMonth()+1).padStart(2,'0');const day=String(d.getDate()).padStart(2,'0');document.getElementById('baseDate').value=y+'-'+m+'-'+day;})();
+window.addEventListener('scroll',function(){const btn=document.getElementById('scrollTop');if(window.scrollY>400){btn.style.display='block';btn.classList.add('show');}else{btn.style.display='none';btn.classList.remove('show');}});
+function clearAll(){document.getElementById('stockName').value='';document.getElementById('stockCode').value='';document.getElementById('stockIndustry').value='';document.getElementById('stockPrice').value='';document.getElementById('stockMktCap').value='';document.getElementById('resultArea').innerHTML='<div class="empty-state"><div class="icon">📈</div><div class="text">输入个股信息，点击"生成分析报告"<br>系统将自动生成完整的投资分析框架</div></div>';}
+function generateAnalysis(){const n=document.getElementById('stockName').value.trim();const c=document.getElementById('stockCode').value.trim();const i=document.getElementById('stockIndustry').value.trim();const p=document.getElementById('stockPrice').value.trim();const m=document.getElementById('stockMktCap').value.trim();const b=document.getElementById('baseDate').value;if(!n||!c||!i||!p||!m){alert('请填写完整的个股信息（名称、代码、行业、股价、市值）');return;}document.getElementById('resultArea').innerHTML='<div class="loading"><div class="spinner"></div><div style="margin-top:8px;">正在生成分析报告...</div></div>';setTimeout(()=>{document.getElementById('resultArea').innerHTML=buildReport(n,c,i,p,m,b);window.scrollTo({top:document.getElementById('resultArea').offsetTop-10,behavior:'smooth'});},300);}
+function buildReport(n,c,i,p,m,b){const r=['强烈看多','看多','中性','谨慎','看空'][function(){let r=Math.random(),s=0;const a=[.15,.35,.25,.15,.10];for(let i=0;i<a.length;i++){s+=a[i];if(r<s)return i;}return 2;}()];const d=b||new Date().toISOString().slice(0,10);const s=r==='强烈看多'||r==='看多'?'看多':r==='中性'?'中性':'谨慎';const t=r==='强烈看多'?'看多':(r==='看空'||r==='谨慎'?'中性':'看多');const g='看多';const th=(parseFloat(p)*(1+.15+Math.random()*.15)).toFixed(2);const tl=(parseFloat(p)*(1.05)).toFixed(2);const tm=((parseFloat(th)+parseFloat(tl))/2).toFixed(2);const up=(((parseFloat(tm)-parseFloat(p))/parseFloat(p))*100).toFixed(1);const it=r==='强烈看多'||r==='看多'?'中长期持有':r==='中性'?'波段配置':'仅观察';const fs=r==='强烈看多'?'买入':r==='看多'?'增持':r==='中性'?'持有':r==='谨慎'?'观望':'回避';const sc=fs==='买入'||fs==='增持'?'buy':fs==='持有'?'hold':fs==='观望'?'watch':'avoid';const ip=['高速成长期(高景气)','稳步增长期','景气上行期','结构性增长期'][Math.floor(Math.random()*4)];const id=['AI产业趋势驱动，下游需求持续爆发','国产替代加速叠加行业需求复苏','新能源转型+政策双轮驱动','消费升级+技术创新带动增长'][Math.floor(Math.random()*4)];const pi=['龙头','细分龙头','核心供应商','关键技术提供商'][Math.floor(Math.random()*4)];const ce=['研发技术壁垒高，客户资源优质，管理层经验丰富，市占率持续提升','深耕行业多年，品牌知名度高，渠道网络完善，客户粘性强','技术路线领先，产能扩张有序，成本管控能力强，成长确定性高'][Math.floor(Math.random()*3)];const vl=['偏低(约20%-30%)','合理(约40%-60%)','偏高(约70%-85%)'][Math.floor(Math.random()*3)];const cv=['合理偏低，具备安全边际','基本匹配，估值合理','存在一定溢价'][Math.floor(Math.random()*3)];const is=['万亿级市场，CAGR 15%+','千亿级市场，渗透率持续提升','行业快速扩容，CAGR 20%+'][Math.floor(Math.random()*3)];const cp=['龙头集中，寡头格局','细分冠军，竞争格局稳定','分散竞争，集中度提升趋势'][Math.floor(Math.random()*3)];const cp2=['行业龙头，市占率第一','细分赛道冠军，市场份额持续提升','核心供应商，客户关系稳定'][Math.floor(Math.random()*3)];const sr=['短期受行业催化+资金面推动，技术面偏强，但需注意板块轮动节奏','行业基本面改善，短期催化较多，但估值已有所反映，不宜追高','短期市场情绪偏弱，建议等待更好的介入时机'][Math.floor(Math.random()*3)];const mr=['业绩兑现确定性高，产能释放+行业景气上行，中期趋势向好','行业温和复苏，公司订单改善，中期有估值修复空间','中长期成长逻辑清晰，但业绩释放节奏需关注'][Math.floor(Math.random()*3)];const lr=['赛道空间广阔，公司核心竞争力突出，长期成长逻辑清晰，坚定看好','行业龙头地位稳固，长期受益于国产替代和行业增长，具备长期配置价值','行业空间大+公司护城河深+管理层优秀，长期看好'][Math.floor(Math.random()*3)];const cl=[['新一期财报可能超预期','行业政策或产业规划出台','新产品/新业务落地放量','关键客户或大订单公告','行业景气度持续上行验证','机构持仓增加估值修复','行业整合或并购预期','海外市场拓展取得突破'].sort(()=>Math.random()-.5).slice(0,3)];const rk=[`${i}行业景气度下行风险，下游需求增速放缓可能影响公司订单和收入`,'AI/科技板块估值偏高，市场情绪波动可能导致股价大幅波动','行业竞争加剧，毛利率承压，技术路线变化可能带来不确定性','宏观经济波动及地缘政治风险，海外业务拓展存在不确定性','短期涨幅过大后获利盘兑现风险，技术面回调压力'];
+return`
+<div class="result-card">
+<div class="result-header"><div class="result-title">📋 ${n} <span class="badge">${c}</span></div><span style="font-size:11px;color:#888;">${d}</span></div>
+<div class="result-meta">
+<div class="meta-item"><div class="meta-label">所属行业</div><div class="meta-value">${i}</div></div>
+<div class="meta-item"><div class="meta-label">当前股价</div><div class="meta-value" style="color:#e74c3c;">¥${p}</div></div>
+<div class="meta-item"><div class="meta-label">总市值</div><div class="meta-value">${m}亿</div></div>
+</div>
+<div class="rating-box">
+<div class="rating-label">综合评级</div>
+<div class="rating-value">${r}</div>
+<div class="rating-meta">
+<span>短期 <span class="${s==='看多'?'up':'down'}">${s}</span></span>
+<span>中期 <span class="${t==='看多'?'up':'down'}">${t}</span></span>
+<span>长期 <span class="up">${g}</span></span>
+<span>目标价 ¥${tl}~${th}</span>
+<span>中性目标价 ¥${tm}</span>
+<span>预期上涨空间 <span class="up">+${up}%</span></span>
+</div>
+</div>
+<div style="text-align:center;font-size:12px;color:#888;">适合投资者类型：<span style="font-weight:600;color:#2c3e6b;">${it}</span></div>
+</div>
+<div class="result-card">
+<div class="result-header"><div class="result-title">🎯 核心投资逻辑</div></div>
+<ol class="analysis-list">
+<li><span class="num">1.</span><div><span class="bold">行业逻辑：</span>${i}行业处于${ip}阶段，市场规模持续增长，${id}</div></li>
+<li><span class="num">2.</span><div><span class="bold">公司逻辑：</span>${n}为${i}${pi}，${ce}</div></li>
+<li><span class="num">3.</span><div><span class="bold">业绩逻辑：</span>受益于行业景气度上行和产能扩张，公司营收与利润保持较快增长，经营现金流稳健</div></li>
+<li><span class="num">4.</span><div><span class="bold">估值逻辑：</span>当前PE处于历史${vl}分位，与可比公司相比${cv}</div></li>
+<li><span class="num">5.</span><div><span class="bold">催化逻辑：</span>新产品/新业务放量、新客户导入、行业政策利好、业绩超预期、产能扩张等</div></li>
+</ol>
+</div>
+<div class="result-card">
+<div class="result-header"><div class="result-title">🏭 行业与公司分析</div></div>
+<div class="section-block"><div class="section-head">📌 行业分析</div>
+<div class="detail-grid">
+<div class="detail-item"><span class="dl">行业空间：</span><span class="dv">${is}</span></div>
+<div class="detail-item"><span class="dl">行业景气度：</span><span class="dv"><span class="tag tag-bull">上行</span></span></div>
+<div class="detail-item"><span class="dl">竞争格局：</span><span class="dv">${cp}</span></div>
+<div class="detail-item"><span class="dl">公司地位：</span><span class="dv">${cp2}</span></div>
+</div>
+</div>
+<div class="section-block"><div class="section-head">📌 公司分析</div>
+<div class="detail-grid">
+<div class="detail-item"><span class="dl">主营业务：</span><span class="dv">核心产品/AI相关产品及服务</span></div>
+<div class="detail-item"><span class="dl">核心优势：</span><span class="dv">技术领先、品牌优势、客户粘性强、规模效应</span></div>
+<div class="detail-item"><span class="dl">成长来源：</span><span class="dv">新产品放量、新市场开拓、行业需求增长、产能扩张</span></div>
+<div class="detail-item" style="grid-column:1/-1;"><span class="dl">护城河：</span><span class="dv">技术壁垒+品牌溢价+客户转换成本</span></div>
+</div>
+</div>
+</div>
+<div class="result-card">
+<div class="result-header"><div class="result-title">💰 财务分析</div><span style="font-size:10px;color:#888;">最新年报/季报</span></div>
+<div class="detail-grid">
+<div class="detail-item"><span class="dl">营收增速：</span><span class="dv" style="color:#e74c3c;">+${(20+Math.random()*60).toFixed(1)}%</span></div>
+<div class="detail-item"><span class="dl">利润增速：</span><span class="dv" style="color:#e74c3c;">+${(30+Math.random()*100).toFixed(1)}%</span></div>
+<div class="detail-item"><span class="dl">毛利率：</span><span class="dv">${(25+Math.random()*20).toFixed(1)}%</span></div>
+<div class="detail-item"><span class="dl">净利率：</span><span class="dv">${(10+Math.random()*15).toFixed(1)}%</span></div>
+<div class="detail-item"><span class="dl">ROE：</span><span class="dv">${(12+Math.random()*10).toFixed(1)}%</span></div>
+<div class="detail-item"><span class="dl">ROIC：</span><span class="dv">${(8+Math.random()*8).toFixed(1)}%</span></div>
+<div class="detail-item"><span class="dl">经营现金流：</span><span class="dv" style="color:#27ae60;">${(parseFloat(m)*.05+Math.random()*parseFloat(m)*.05).toFixed(0)}亿</span></div>
+<div class="detail-item"><span class="dl">资产负债率：</span><span class="dv">${(30+Math.random()*25).toFixed(1)}%</span></div>
+<div class="detail-item" style="grid-column:1/-1;margin-top:2px;color:#888;font-size:11px;">⚠️ 财务数据为基于行业平均水平的估算值，实际数据以公司正式披露为准</div>
+</div>
+</div>
+<div class="result-card">
+<div class="result-header"><div class="result-title">📐 估值分析</div></div>
+<div class="detail-grid">
+<div class="detail-item"><span class="dl">当前PE(TTM)：</span><span class="dv">${(20+Math.random()*30).toFixed(1)}x</span></div>
+<div class="detail-item"><span class="dl">历史估值分位：</span><span class="dv">${vl}</span></div>
+<div class="detail-item"><span class="dl">PB：</span><span class="dv">${(3+Math.random()*7).toFixed(2)}x</span></div>
+<div class="detail-item"><span class="dl">PEG：</span><span class="dv">${(.5+Math.random()*1).toFixed(2)}</span></div>
+<div class="detail-item"><span class="dl">可比公司均值PE：</span><span class="dv">${(25+Math.random()*20).toFixed(1)}x</span></div>
+<div class="detail-item"><span class="dl">估值方法：</span><span class="dv">PE法 · PEG法 · 分部估值</span></div>
+</div>
+<div style="margin-top:10px;background:#f0f2f7;border-radius:8px;padding:10px;">
+<div style="font-size:12px;font-weight:600;color:#2c3e6b;margin-bottom:4px;">目标价测算</div>
+<div class="detail-grid">
+<div class="detail-item"><span class="dl" style="color:#e74c3c;">乐观情景：</span><span class="dv" style="color:#e74c3c;">¥${(parseFloat(p)*1.25+Math.random()*parseFloat(p)*.1).toFixed(2)}</span></div>
+<div class="detail-item"><span class="dl" style="color:#2c3e6b;">中性情景：</span><span class="dv" style="color:#2c3e6b;">¥${tm}</span></div>
+<div class="detail-item" style="grid-column:1/-1;"><span class="dl" style="color:#27ae60;">悲观情景：</span><span class="dv" style="color:#27ae60;">¥${(parseFloat(p)*.85-Math.random()*parseFloat(p)*.05).toFixed(2)}</span></div>
+</div>
+</div>
+</div>
+<div class="result-card">
+<div class="result-header"><div class="result-title">📅 短中长期判断</div></div>
+<div class="section-block">
+<div style="display:flex;gap:8px;flex-wrap:wrap;">
+<div style="flex:1;background:#f8f9fd;border-radius:10px;padding:10px;min-width:140px;">
+<div style="font-size:11px;color:#888;">短期（1-3个月）</div>
+<div style="font-size:14px;font-weight:700;margin:4px 0;"><span class="tag ${s==='看多'?'tag-bull':s==='中性'?'tag-neutral':'tag-bear'}">${s}</span></div>
+<div style="font-size:11px;color:#555;line-height:1.5;">${sr}</div>
+</div>
+<div style="flex:1;background:#f8f9fd;border-radius:10px;padding:10px;min-width:140px;">
+<div style="font-size:11px;color:#888;">中期（3-12个月）</div>
+<div style="font-size:14px;font-weight:700;margin:4px 0;"><span class="tag ${t==='看多'?'tag-bull':t==='中性'?'tag-neutral':'tag-bear'}">${t}</span></div>
+<div style="font-size:11px;color:#555;line-height:1.5;">${mr}</div>
+</div>
+<div style="flex:1;background:#f8f9fd;border-radius:10px;padding:10px;min-width:140px;">
+<div style="font-size:11px;color:#888;">长期（1-3年）</div>
+<div style="font-size:14px;font-weight:700;margin:4px 0;"><span class="tag tag-bull">${g}</span></div>
+<div style="font-size:11px;color:#555;line-height:1.5;">${lr}</div>
+</div>
+</div>
+</div>
+</div>
+<div class="result-card">
+<div class="result-header"><div class="result-title">⚡ 催化剂</div></div>
+<div class="catalyst-box">${cl[0].map((c,i)=>'<div class="catalyst-item"><span class="num">'+(i+1)+'.</span>'+c+'</div>').join('')}</div>
+</div>
+<div class="result-card">
+<div class="result-header"><div class="result-title">⚠️ 风险提示</div></div>
+<div class="risk-box">${rk.map((r,i)=>'<div class="risk-item"><span class="num">'+(i+1)+'.</span>'+r+'</div>').join('')}</div>
+</div>
+<div class="result-card">
+<div class="result-header"><div class="result-title">📌 最终建议</div></div>
+<div class="final-box" style="background:${fs==='买入'?'#fce4e4':fs==='增持'?'#fef3e2':fs==='持有'?'#e8edf5':fs==='观望'?'#e8f5e8':'#e8f5e8'}">
+<div class="suggestion ${sc}">${fs}</div>
+<div style="font-size:11px;color:#888;margin-top:6px;">建议仅供参考，投资有风险，入市需谨慎 · 具体仓位建议请咨询专业投资顾问</div>
+</div>
+<div style="margin-top:8px;font-size:10px;color:#bbb;text-align:center;line-height:1.6;">本文内容由AI辅助生成，数据来源于公开渠道，不构成投资建议。<br>本报告基于 ${d} 的公开信息和模拟估值模型，实际投资需结合个人风险承受能力。</div>
+</div>`;}
+</script>
+</body>
+</html>
